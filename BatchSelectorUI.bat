@@ -36,7 +36,7 @@
  rem ---‚¨‚í‚è---
 
  :sof
- rem BatchSelectorUI - v1.0
+ rem BatchSelectorUI - v1.0.1
  rem (c) 2024 akikawa9616
 
  set tsv_place=a1
@@ -109,6 +109,7 @@ rem -- UI teleport --
   call %temp%\.BatchSelectorUI\placeCommand.bat
   set /a tsv_place2=%tsv_place2% - 1
   set tsv_invalidDestination=false
+  echo;
   if not %tsv_noCls% == true cls
   exit /b
  
@@ -120,6 +121,7 @@ rem -- UI teleport --
   call %temp%\.BatchSelectorUI\placeCommand.bat
   set /a tsv_place2=%tsv_place2% + 1
   set tsv_invalidDestination=false
+  echo;
   if not %tsv_noCls% == true cls
   exit /b
 rem -- error --
