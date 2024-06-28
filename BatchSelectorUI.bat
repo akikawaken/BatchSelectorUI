@@ -109,8 +109,8 @@ rem -- UI teleport --
   call %temp%\.BatchSelectorUI\placeCommand.bat
   set /a tsv_place2=%tsv_place2% - 1
   set tsv_invalidDestination=false
-  echo;
   if not %tsv_noCls% == true cls
+  echo;
   exit /b
  
  :ui_down
@@ -121,8 +121,8 @@ rem -- UI teleport --
   call %temp%\.BatchSelectorUI\placeCommand.bat
   set /a tsv_place2=%tsv_place2% + 1
   set tsv_invalidDestination=false
-  echo;
   if not %tsv_noCls% == true cls
+  echo;
   exit /b
 rem -- error --
  :error_choice
