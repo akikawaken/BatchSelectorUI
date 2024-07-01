@@ -36,7 +36,7 @@
  rem ---‚¨‚í‚è---
 
  :sof
- rem BatchSelectorUI - v1.0.1
+ rem BatchSelectorUI - v1.0.2
  rem (c) 2024 akikawa9616
 
  set tsv_place=a1
@@ -53,7 +53,7 @@
  )
  for /f "usebackq skip=1" %%a in ("%tsv_UITextFile%") do (
   set tsv_Count=%%a
-  if "!tsv_Count:~0,1!" == "@" ( set tsv_maxPlace=!tsv_Count:~1,1!)
+  if "!tsv_Count:~0,1!" == "@" ( set tsv_maxPlace=!tsv_Count:~1!)
  )
  set tsv_Count=0
  for /f "usebackq skip=2" %%a in ("%tsv_UITextFile%") do (
