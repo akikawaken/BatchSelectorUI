@@ -36,7 +36,7 @@
  rem ---‚¨‚í‚è---
 
  :sof
- rem BatchSelectorUI - v1.0.2
+ rem BatchSelectorUI - v1.0.3
  rem (c) 2024 akikawa9616
 
  set tsv_place=a1
@@ -103,7 +103,7 @@
 rem -- UI teleport --
  :ui_up
   set tsv_place1=%tsv_place:~0,1%
-  set tsv_place2=%tsv_place:~1,1%
+  set tsv_place2=%tsv_place:~1%
   if %tsv_place2% == 1 ( call :error_cantMove & exit /b )
   echo set tsv_%tsv_place1%%tsv_place2%=%%tsv_%tsv_place1%%tsv_place2%:~0,-2%%>%temp%\.BatchSelectorUI\placeCommand.bat
   call %temp%\.BatchSelectorUI\placeCommand.bat
@@ -115,7 +115,7 @@ rem -- UI teleport --
  
  :ui_down
   set tsv_place1=%tsv_place:~0,1%
-  set tsv_place2=%tsv_place:~1,1%
+  set tsv_place2=%tsv_place:~1%
   if %tsv_place2% == %tsv_maxPlace% ( call :error_cantMove & exit /b )
   echo set tsv_%tsv_place1%%tsv_place2%=%%tsv_%tsv_place1%%tsv_place2%:~0,-2%%>%temp%\.BatchSelectorUI\placeCommand.bat
   call %temp%\.BatchSelectorUI\placeCommand.bat
