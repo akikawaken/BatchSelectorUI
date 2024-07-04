@@ -36,7 +36,7 @@
  rem ---‚¨‚í‚è---
 
  :sof
- rem BatchSelectorUI - v1.0.3
+ rem BatchSelectorUI - v1.0.5
  rem (c) 2024 akikawa9616
 
  set tsv_place=a1
@@ -44,7 +44,8 @@
  set tsv_place2=%tsv_place:~1,1%
  set tsv_place=%tsv_place1%%tsv_place2%
 
- if not exist %temp%\.BatchSelectorUI\exist.tscf (md %temp%\.BatchSelectorUI & echo;>%temp%\.BatchSelectorUI\exist.tscf)
+ if not exist %temp%\.BatchSelectorUI\exist.tscf ( md %temp%\.BatchSelectorUI)
+ if not exist %temp%\.BatchSelectorUI\exist.tscf ( echo;>%temp%\.BatchSelectorUI\exist.tscf & goto sof)
  :setText
  setlocal enabledelayedexpansion
  for /f "usebackq" %%a in ("%tsv_UITextFile%") do (
@@ -80,10 +81,10 @@
  echo %tsv_title%
  echo;
  for /l %%a in (1,1,%tsv_maxPlace%) do (
-  echo echo %%tsv_a%%a%% >%temp%\.BatchSelectorUI\hoge.bat
-  call %temp%\.BatchSelectorUI\hoge.bat
+  echo echo %%tsv_a%%a%% >%temp%\.BatchSelectorUI\placeCommand.bat
+  call %temp%\.BatchSelectorUI\placeCommand.bat
  )
- del %temp%\.BatchSelectorUI\hoge.bat
+ del %temp%\.BatchSelectorUI\placeCommand.bat
  echo -----
  for /f "usebackq skip=%tsv_place2% tokens=1-2 delims=:" %%a in ("%tsv_UIHintFile%") do (
   if %%a == %tsv_place2% (echo %%b))
@@ -95,7 +96,7 @@
  if %ERRORLEVEL% == 1 call :ui_up
  if %ERRORLEVEL% == 2 call :ui_down
  if %ERRORLEVEL% == 3 exit /b
- if %ERRORLEVEL% == 0 goto selector
+ if %ERRORLEVEL% == 0 exit /b
  if %ERRORLEVEL% == 255 goto error_choice
  if %tsv_invalidDestination% == true goto selector
  goto setTextColor
